@@ -8,6 +8,7 @@ jobs:
   semgrep:
     runs-on: ubuntu-latest
     name: Check
+    continue-on-error: true
     strategy:
       matrix:
         # 'r/all', 'p/dockerfile', 'p/react'
