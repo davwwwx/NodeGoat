@@ -8,10 +8,27 @@ jobs:
   semgrep:
     runs-on: ubuntu-latest
     name: Check
+    strategy:
+      matrix:
+        # 'r/all', 'p/dockerfile', 'p/react'
+        rulesets: 
+          - p/nodejsscan
+          - p/clientside-js
+          - p/daghan.all js
+          - p/danielcuthbert.quickjs
+          - p/dduarte.test-js-pack
+          - p/hazanasec.jwt-security-audit
+          - p/hazanasec.generic_possible_xss
+          - p/hazanasec.non-prepared-sql-statements
+          - p/hazanasec.possible_hardcoded_secrets
+          - p/minusworld.express-xss
+          - p/reeyaa.nodejs-findsecbugs
+          - p/tkisason.javascript-kitchensink
+          - p/tkisason.js-all-test
     steps:
       - uses: actions/checkout@v1
       - name: Semgrep
         id: semgrep
         uses: returntocorp/semgrep-action@v1
         with:
-          config: r/all
+          config: ${{ matrix.rulesets }}
