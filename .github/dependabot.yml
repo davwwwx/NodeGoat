@@ -11,5 +11,4 @@ updates:
       - "davwwwx"
     assignees:
       - "davwwwx"
-    target-branch: "dev"
     open-pull-requests-limit: 10
